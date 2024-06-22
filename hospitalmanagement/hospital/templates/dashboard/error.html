@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% include "dashboard/admin_navbar.html" %}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    <style>
+        /* Basic styling for error message */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        .error-message {
+            background-color: #ffebee;
+            color: #b71c1c;
+            border: 1px solid #b71c1c;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+{% block content %}
+    <div class="error-message">
+        <h2>Error</h2>
+        <p>{{ message }}</p>
+    </div>
+</body>
+{% endblock %}
+
+</html>

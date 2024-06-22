@@ -1,0 +1,33 @@
+<!--{% extends "dashboard/base.html" %}-->
+
+{% include 'doctor/doctor_navbar.html' %}
+<!--it includes index(that contains styles,js,link) and navbar-->
+
+{% block content %}
+<h1>Edit Doctor</h1>
+<form method="post">
+    {% csrf_token %}
+    <label for="first_name">First Name:</label>
+    <input type="text" name="first_name" value="{{ doctor.first_name }}" required><br>
+    
+    <label for="last_name">Last Name:</label>
+    <input type="text" name="last_name" value="{{ doctor.last_name }}" required><br>
+    
+    <label for="email">Email:</label>
+    <input type="email" name="email" value="{{ doctor.email }}" required><br>
+    
+    <label for="contact">Contact:</label>
+    <input type="text" name="contact" value="{{ doctor.contact }}" required><br>
+    
+    <label for="department">Department:</label>
+    <input type="text" name="department" value="{{ doctor.department }}" required><br>
+    
+    <label for="availability">Availability:</label>
+    <input type="text" name="availability" value="{{ doctor.availability }}" required><br>
+    
+    <label for="date_joined">Date Joined:</label>
+    <input type="date" name="date_joined" value="{{ doctor.date_joined }}" required><br>
+    
+    <button type="submit">Save Chnages</button>
+</form>
+{% endblock %}

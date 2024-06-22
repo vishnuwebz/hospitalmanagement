@@ -1,0 +1,110 @@
+
+{% extends 'base/index.html' %}
+{% load static %}
+
+{% block title %} services {% endblock%}
+
+
+{% block content %}
+
+
+      <section class="section service" id="service" aria-label="service" style="margin-bottom:10px; background-image: url('{% static 'images/hero-bg.png'%}'); width: 100%; background-size: cover;background-repeat: no-repeat; background-position: center center;">
+        <div class="container">
+
+          <p class="section-subtitle text-center">Our Services</p>
+
+          <h2 class="h2 section-title text-center">What We Provide</h2>
+
+          <section style="background-image: url('{% static 'images/hero-bg.png'%}');">
+            <ul class="service-list">
+              <!-- List of service items -->
+              <li>
+                <div class="service-card">
+                  <div class="card-icon">
+                    <span><i class="ri-microscope-line" style="width:100;"></i></span>
+                  </div>
+                  <div>
+                    <h3 class="h3 card-title">Laboratory Test</h3>
+                    <p class="card-text">Accurate Diagnostics, Swift Results: Experience top-notch Laboratory Testing at our facility.</p>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div class="service-card">
+                  <div class="card-icon">
+                    <span><i class="ri-mental-health-line" style="width:100;"></i></span>
+                  </div>
+                  <div>
+                    <h3 class="h3 card-title">Health Check</h3>
+                    <p class="card-text">Our thorough assessments and expert evaluations help you stay proactive about your health.</p>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div class="service-card">
+                  <div class="card-icon">
+                    <span><i class="ri-hospital-fill" style="width:100;"></i></span>
+                  </div>
+                  <div>
+                    <h3 class="h3 card-title">General Dentistry</h3>
+                    <p class="card-text">Experience comprehensive oral care with Dentistry. Trust us to keep your smile healthy and bright.</p>
+                  </div>
+                </div>
+              </li>
+
+              <li class="service-banner">
+                <figure>
+                  <img src="{% static 'images/service-banner1.png' %}" width="409" height="467" loading="lazy" alt="service banner" class="w-100" />
+                </figure>
+              </li>
+
+              <li>
+                <div class="service-card">
+                  <div class="card-icon">
+                    <span><i class="ri-hand-heart-line" style="width:100;"></i></span>
+                  </div>
+                  <div>
+                    <h3 class="h3 card-title">Intensive Care</h3>
+                    <p class="card-text">Our Intensive Care Unit is equipped with advanced technology and staffed by team of professionals</p>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div class="service-card">
+                  <div class="card-icon">
+                    <span><i class="ri-truck-line" style="width:100;"></i></span>
+                  </div>
+                  <div>
+                    <h3 class="h3 card-title">Free Ambulance Car</h3>
+                    <p class="card-text">A compassionate initiative to prioritize your health and well-being without any financial burden.</p>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div class="service-card">
+                  <div class="card-icon">
+                    <span><i class="ri-capsule-fill" style="width:100;"></i></span>
+                  </div>
+                  <div>
+                    <h3 class="h3 card-title">Medical and Surgical</h3>
+                    <p class="card-text">Our Medical and Surgical services offer advanced healthcare solutions to address medical needs.</p>
+                  </div>
+                </div>
+              </li>
+
+            </ul>
+            <!--service-list ends-->
+          </section>
+        </div>
+      </section>
+
+
+      <div style="background-image: url('{% static 'images/hero-bg.png'%}');">
+
+      </div>
+<!--<br style="background-image: url('{% static 'images/hero-bg.png'%}');">-->
+{% endblock %}

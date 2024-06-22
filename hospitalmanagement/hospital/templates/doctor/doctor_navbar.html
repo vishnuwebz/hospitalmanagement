@@ -1,0 +1,171 @@
+ {% include 'dashboard/index.html' %}
+{% load static %}
+  <header class="header">
+
+    <div class="header-top">
+      <div class="container">
+
+        <ul class="contact-list">
+
+          <li class="contact-item">
+            <ion-icon name="mail-outline"></ion-icon>
+
+            <a href="mailto:info@example.com" class="contact-link">info@example.com</a>
+          </li>
+
+          <li class="contact-item">
+            <ion-icon name="call-outline"></ion-icon>
+
+            <a href="tel:+919074640425" class="contact-link">+91-907-46-40-425</a>
+          </li>
+          {{ user.first_name }} {{ user.last_name }}'s Dashboard    (doctor dashboard)
+        </ul>
+
+        <ul class="social-list">
+
+          <li>
+            <a href="https://www.linkedin.com/in/vishnu-g-15b9201b5?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-link">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
+
+
+          <li>
+            <a href="https://t.me/+hHMTtesaMN03YTQ1" class="social-link">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="https://www.instagram.com/vishnu_webz?igsh=MTFib3l5NWY4dHp3ZA==" class="social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="https://x.com/VWebz?t=iclTOVYE2PR8nveGbsdrbQ&s=09" class="social-link">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="https://youtube.com/@intech.bywebz" class="social-link">
+              <ion-icon name="logo-youtube"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="header-bottom" data-header>
+      <div class="container">
+
+        <a href="{% url 'doctor_logout_confirmation' %}" class="logo">Medico</a>
+
+        <nav class="navbar container" data-navbar>
+          <ul class="navbar-list">
+
+            <li>
+              <a href="{% url 'add_doctor' %}" class="navbar-link" data-nav-link>Add</a>
+            </li>
+
+            <li>
+              <a href="{% url 'doctor_dashboard' %}" class="navbar-link" data-nav-link>Dashboard</a>
+            </li>
+
+            <li>
+              <a href="{% url 'patient_list' %}" class="navbar-link" data-nav-link>Manage Patients</a>
+            </li>
+
+            <li>
+              <a href="{% url 'add_patient' %}" class="navbar-link" data-nav-link>Add Patient</a>
+            </li>
+
+
+
+            <li>
+              <a href="{% url 'add_billing' %}" class="navbar-link" >Add Billings</a>
+            </li>
+
+            <li>
+              <a href="{% url 'discharge_list' %}" class="navbar-link" >Discharge List </a>
+            </li>
+
+            <li>
+              <a href="{% url 'billing_list' %}" class="navbar-link" >Your patients </a>
+            </li>
+
+            <li>
+              {% if billing_id %}
+              <a href="{% url 'edit_billing' billing_id.id %}" class="navbar-link" >Edit Bills</a>
+              {% else %}
+               {% endif %}
+            </li>
+
+
+          </ul>
+        </nav>
+        <form action="{% url 'doctor_logout_confirmation' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn">Logout</button>
+        </form>
+<!--        <a href="{% url 'logout' %}" class="btn">Logout</a>-->
+
+        <button class="nav-toggle-btn" aria-label="Toggle menu" data-nav-toggler>
+          <ion-icon name="menu-sharp" aria-hidden="true" class="menu-icon"></ion-icon>
+          <ion-icon name="close-sharp" aria-hidden="true" class="close-icon"></ion-icon>
+        </button>
+
+      </div>
+    </div>
+
+  </header>
+
+ <br><br><br><br><br>
+
+<style>
+/* Navbar links styling */
+.navbar-list {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
+
+.navbar-link {
+  color: #333; /* Default color for navbar links */
+  text-decoration: none;
+  padding: 10px;
+  margin-right: 10px;
+  transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+.navbar-link:hover {
+  color: #007bff; /* Color on hover */
+}
+
+/* Active link styling */
+.navbar-link.active {
+  color: #007bff; /* Blue color for active link */
+}
+
+/* Toggle button styling */
+.nav-toggle-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-icon,
+.close-icon {
+  font-size: 1.5rem;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.menu-icon:hover,
+.close-icon:hover {
+  color: #007bff;
+}
+</style>

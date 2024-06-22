@@ -1,0 +1,44 @@
+{% extends 'base/index.html' %}
+{% load static %}
+<!--{% include 'base/patient_navbar.html' %}-->
+{% block title %} about us {% endblock%}
+
+
+{% block content %}
+
+<section class="section hero" id="home" style="background-image: url('{% static 'images/hero-bg.png'%}')" aria-label="hero">
+
+  <section class="section about" id="about"style="background-image: url('{% static 'images/hero-bg.png'%}')" aria-label="about">
+        <div class="container">
+
+          <figure class="about-banner">
+            <img src="{% static 'images/about-banner.png' %}" width="470" height="538" loading="lazy" alt="about banner" class="w-100">
+          </figure>
+
+          <div class="about-content">
+
+            <p class="section-subtitle">About Us</p>
+
+            <h2 class="h2 section-title">We Care For Your Health</h2>
+
+            <p class="section-text section-text-1">
+              Welcome to our healthcare website, your one-stop destination for reliable and comprehensive health care information.
+              We are committed to promoting wellness and providing valuable resources to empower you on your health journey.
+            </p>
+
+            <p class="section-text">
+              Explore our extensive collection of expertly written articles and guides covering a wide range of health topics.
+              From understanding common medical conditions to tips for maintaining a healthy lifestyle, our content is designed to educate, inspire, and support you in making informed choices for your health.
+            </p>
+
+            <a href="#" class="btn">Read more</a>
+
+          </div>
+
+        </div>
+      </section>
+  <br>
+</section>
+{% endblock %}
+
+<!--{% include "base/footer.html" %}-->

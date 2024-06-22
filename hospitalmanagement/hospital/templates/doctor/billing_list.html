@@ -1,0 +1,100 @@
+{% include "doctor/doctor_navbar.html" %}
+
+{% block content %}
+<section class="section dashboard" id="dashboard" aria-label="dashboard" style="margin-bottom:10px; width: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center;">
+  <div class="container">
+    <div class="dashboard-card" style="box-shadow: var(--shadow-4); margin-bottom: 20px; padding: 30px; border: 1px solid var(--light-gray); border-radius: var(--radius-6); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+      <p class="section-subtitle text-center">Doctor Dashboard</p>
+      <h2 class="h2 section-title text-center">Billings</h2>
+    </div>
+  </div>
+  <br><br>
+
+  <div class="container" style="text-align: center;">
+    <div class="dashboard-card" style="box-shadow: var(--shadow-4); margin-bottom: 20px; padding: 30px; border: 1px solid var(--light-gray); border-radius: var(--radius-6); text-align: left; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+      <div class="row justify-content-center">
+        <div class="col-md-4">
+          <div style="padding: 30px; text-align: left;">
+            <h3 class="h3 card-title">About This:</h3>
+            <p class="card-text">View and manage patient billings</p>
+          </div>
+        </div>
+        <div class="form-container">
+          <a href="{% url 'add_billing' %}" class="btn btn-primary" style="margin-bottom: 20px;">
+            <i class="fas fa-plus"></i> Add New Billing
+          </a>
+          <ul class="billing-list">
+            {% for billing in billings %}
+              <li class="billing-item">{{ billing.patient.first_name }} {{ billing.patient.last_name }} - {{ billing.amount }} - {{ billing.status }} -
+                <a href="{% url 'edit_billing' billing.id %}" class="btn btn-secondary">Edit</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<br>
+<!--for zoom in effect-->
+<style>
+  .form-container {
+    width: 50%;
+    margin: 0 auto; /* This centers the form */
+    background: none;
+  }
+
+  .dashboard-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .billing-list {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .billing-item {
+    padding: 10px;
+    border-bottom: 1px solid var(--light-gray);
+  }
+
+  .billing-item:last-child {
+    border-bottom: none;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: var(--radius-6);
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+
+  .btn-secondary {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #6c757d;
+    border: none;
+    border-radius: var(--radius-6);
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-secondary:hover {
+    background-color: #5a6268;
+  }
+</style>
+{% endblock %}

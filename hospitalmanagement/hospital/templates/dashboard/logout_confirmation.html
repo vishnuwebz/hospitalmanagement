@@ -1,0 +1,21 @@
+<!-- logout_confirmation.html -->
+{% include "dashboard/admin_navbar.html" %}
+
+{% block content %}
+<section class="section dashboard" id="dashboard" aria-label="dashboard">
+  <div class="container">
+    <div class="dashboard-card" style="text-align: center; padding: 30px;">
+      <h2 class="h2 section-title" >Confirm Logout</h2>
+      <br>
+      <p style="color:black;"> <b>Are you sure you want to <span style="color:red;">log out?</span></b></p>
+      <br><br>
+      <form method="post" action="{% url 'logout' %}" style="display: inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Confirm Logout</button>
+      </form>
+        <br><br>
+      <button onclick="window.history.back()" class="btn btn-secondary">Cancel</button>
+    </div>
+  </div>
+</section>
+{% endblock %}

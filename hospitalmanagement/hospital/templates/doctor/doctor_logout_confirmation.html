@@ -1,0 +1,72 @@
+{% include 'doctor/doctor_navbar.html' %}
+
+{% block content %}
+<section class="section dashboard" id="dashboard" aria-label="dashboard" style="margin-bottom: 10px; width: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center;">
+  <div class="container">
+    <div class="dashboard-card" style="box-shadow: var(--shadow-4); margin-bottom: 20px; padding: 30px; border: 1px solid var(--light-gray); border-radius: var(--radius-6); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+      <h2 class="h2 section-title">Logout Confirmation</h2>
+      <br>
+      <p style="color:black;"> <b>Are you sure you want to <span style="color:red;">log out?</span></b></p>
+      <br><br>
+      <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Logout</button>
+        <br><br>
+        <a href="{% url 'doctor_dashboard' %}" class="btn btn-secondary">Cancel</a>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+<style>
+  .dashboard-card {
+    box-shadow: var(--shadow-4);
+    margin-bottom: 20px;
+    padding: 30px;
+    border: 1px solid var(--light-gray);
+    border-radius: var(--radius-6);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .dashboard-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: var(--radius-6);
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+
+  .btn-secondary {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #6c757d;
+    border: none;
+    border-radius: var(--radius-6);
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-secondary:hover {
+    background-color: #5a6268;
+  }
+</style>

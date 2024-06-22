@@ -1,0 +1,31 @@
+{% include 'patient/patient_navbar.html' %}
+{% load static %}
+
+
+
+{% block content %}
+<section class="section department" id="department" aria-label="service" style="margin-bottom:10px;">
+  <div class="container">
+    <p class="section-subtitle text-center">Our Departments</p>
+    <h2 class="h2 section-title text-center">Our hospital's departments provide personalized, compassionate care. Trust us for your wellness journey.</h2>
+  </div>
+
+  <div class="container">
+    {% for d in dept %}
+    <div class="department-card" style="box-shadow: var(--shadow-4); margin-bottom: 20px; padding: 30px; border: 1px solid var(--light-gray); border-radius: var(--radius-6); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+      <h3 class="h3 card-title" style="align-items:center;">{{ d.dep_name }}:</h3>
+      <p class="card-text" style="padding-top: 10px;">{{ d.dep_description }}</p>
+    </div>
+    {% endfor %}
+  </div>
+
+</section>
+<br>
+<!--for zoom in effect-->
+<style>
+  .department-card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+</style>
+{% endblock %}

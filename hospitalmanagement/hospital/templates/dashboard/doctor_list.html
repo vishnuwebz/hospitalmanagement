@@ -1,0 +1,14 @@
+{% include "dashboard/admin_navbar.html" %}
+
+{% block content %}
+<h1>Doctors</h1>
+<a href="{% url 'add_doctor' %}">Add new doctor</a>
+<ul>
+    {% for doctor in doctors %}
+    <li>Dr. {{doctor.first_name}} {{doctor.last_name}} - <a href="{% url 'edit_doctor' doctor.id %}">Edit</a></li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
+
+

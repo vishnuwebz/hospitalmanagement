@@ -1,0 +1,376 @@
+
+
+<!DOCTYPE html>
+{% extends 'base/index.html' %}
+<html lang="en" dir="ltr">
+{% load static %}
+
+<head>
+  <meta charset="utf-8">
+  <title>homebase</title>
+
+</head>
+
+<body>
+  {%block content%}
+
+
+  {% include "base/hero.html" %}
+  <!--services-->
+  <section class="section service" id="service" aria-label="service">
+    <div class="container">
+      <p class="section-subtitle text-center">Our Services</p>
+
+      <h2 class="h2 section-title text-center">What We Provide</h2>
+      <section style="background-image: url('{% static 'images/hero-bg.png'%}');">
+        <ul class="service-list">
+          <li>
+            <div class="service-card">
+              <div class="card-icon">
+
+                <span><i class="ri-microscope-line" style="width:100;"></i></span>
+              </div>
+
+              <div>
+                <h3 class="h3 card-title">Laboratory Test</h3>
+
+                <p class="card-text">
+                  Accurate Diagnostics, Swift Results: Experience top-notch Laboratory Testing at our facility.
+                </p>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="service-card">
+              <div class="card-icon">
+
+                <span><i class="ri-mental-health-line" style="width:100;"></i></span>
+              </div>
+
+              <div>
+                <h3 class="h3 card-title">Health Check</h3>
+
+                <p class="card-text">
+                  Our thorough assessments and expert evaluations help you stay
+                  proactive about your health.
+                </p>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="service-card">
+              <div class="card-icon">
+                <span><i class="ri-hospital-fill" style="width:100;"></i></span>
+              </div>
+
+              <div>
+                <h3 class="h3 card-title">General Dentistry</h3>
+
+                <p class="card-text">
+                  Experience comprehensive oral care with Dentistry. Trust us to keep
+                  your smile healthy and bright.
+                </p>
+              </div>
+            </div>
+          </li>
+
+          <li class="service-banner">
+            <figure>
+              <img src="{% static 'images/service-banner1.png' %}" width="409" height="467" loading="lazy" alt="service banner" class="w-100" />
+            </figure>
+          </li>
+
+          <li>
+            <div class="service-card">
+              <div class="card-icon">
+
+                <span><i class="ri-hand-heart-line" style="width:100;"></i></span>
+              </div>
+
+              <div>
+                <h3 class="h3 card-title">Intensive Care</h3>
+
+                <p class="card-text">
+                  Our Intensive Care Unit is equipped with advanced technology and
+                  staffed by team of professionals
+                </p>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="service-card">
+              <div class="card-icon">
+
+                <span><i class="ri-truck-line" style="width:100;"></i></span>
+              </div>
+
+              <div>
+                <h3 class="h3 card-title">Free Ambulance Car</h3>
+
+                <p class="card-text">
+                  A compassionate initiative to prioritize your health and
+                  well-being without any financial burden.
+                </p>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="service-card">
+              <div class="card-icon">
+
+                <span><i class="ri-capsule-fill" style="width:100;"></i></span>
+              </div>
+
+              <div>
+                <h3 class="h3 card-title">Medical and Surgical</h3>
+
+                <p class="card-text">
+                  Our Medical and Surgical services offer advanced healthcare
+                  solutions to address medical needs.
+                </p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </section>
+
+
+  <!--about us-->
+  <section class="section hero" id="" style="background-image: url('{% static 'images/hero-bg.png'%}')" aria-label="hero">
+
+  <section class="section about" id="about"style="background-image: url('{% static 'images/hero-bg.png'%}')" aria-label="about">
+        <div class="container">
+
+          <figure class="about-banner">
+            <img src="{% static 'images/about-banner.png' %}" width="470" height="538" loading="lazy" alt="about banner" class="w-100">
+          </figure>
+
+          <div class="about-content">
+
+            <p class="section-subtitle">About Us</p>
+
+            <h2 class="h2 section-title">We Care For Your Health</h2>
+
+            <p class="section-text section-text-1">
+              Welcome to our healthcare website, your one-stop destination for reliable and comprehensive health care information.
+              We are committed to promoting wellness and providing valuable resources to empower you on your health journey.
+            </p>
+
+            <p class="section-text">
+              Explore our extensive collection of expertly written articles and guides covering a wide range of health topics.
+              From understanding common medical conditions to tips for maintaining a healthy lifestyle, our content is designed to educate, inspire, and support you in making informed choices for your health.
+            </p>
+
+            <a href="#" class="btn">Read more</a>
+
+          </div>
+
+        </div>
+      </section>
+  <br>
+</section>
+
+  <!--doctors-->
+<!--  <section class="section doctor" style="background-image: url('{% static 'images/hero-bg.png'%}')" aria-label="doctor">-->
+<!--    <div class="container">-->
+<!--      <p class="section-subtitle text-center">Our Doctors</p>-->
+<!--      <h2 class="h2 section-title text-center">We take pride in our exceptional team of doctors, each a specialist in their respective fields.</h2>-->
+<!--      <ul class="has-scrollbar">-->
+<!--        <li class="scrollbar-item">-->
+<!--          <div class="doctor-card">-->
+<!--            <div class="card-banner img-holder" style="&#45;&#45;width: 460; &#45;&#45;height: 500;">-->
+<!--              <img src="{% static 'images/doctor-1.png' %}" width="460" height="500" loading="lazy" alt="Howard Holmes" class="img-cover">-->
+<!--            </div>-->
+<!--            <h3 class="h3">-->
+<!--              <a href="#" class="card-title">Howard Holmes</a>-->
+<!--            </h3>-->
+<!--            <p class="card-subtitle">Dentist</p>-->
+<!--            <ul class="card-social-list">-->
+<!--              <li>-->
+<!--                <a href="#" class="card-social-link">-->
+<!--                  <ion-icon name="logo-facebook"></ion-icon>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="#" class="card-social-link">-->
+<!--                  <ion-icon name="logo-twitter"></ion-icon>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="#" class="card-social-link">-->
+<!--                  <ion-icon name="logo-instagram"></ion-icon>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--            </ul>-->
+<!--          </div>-->
+<!--        </li>-->
+<!--        <li class="scrollbar-item">-->
+<!--          <div class="doctor-card">-->
+<!--            <div class="card-banner img-holder" style="&#45;&#45;width: 460; &#45;&#45;height: 500;">-->
+<!--              <img src="{% static 'images/doctor-2.png' %}" width="460" height="500" loading="lazy" alt="Ella Thompson" class="img-cover">-->
+<!--            </div>-->
+<!--            <h3 class="h3">-->
+<!--              <a href="#" class="card-title">Ella Thompson</a>-->
+<!--            </h3>-->
+<!--            <p class="card-subtitle">Dentist</p>-->
+<!--            <ul class="card-social-list">-->
+<!--              <li>-->
+<!--                <a href="#" class="card-social-link">-->
+<!--                  <ion-icon name="logo-facebook"></ion-icon>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="#" class="card-social-link">-->
+<!--                  <ion-icon name="logo-twitter"></ion-icon>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="#" class="card-social-link">-->
+<!--                  <ion-icon name="logo-instagram"></ion-icon>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--            </ul>-->
+<!--          </div>-->
+<!--        </li>-->
+<!--        <li class="scrollbar-item">-->
+<!--          <div class="doctor-card">-->
+<!--            <div class="card-banner img-holder" style="&#45;&#45;width: 460; &#45;&#45;height: 500;">-->
+<!--              <img src="{% static 'images/doctor-3.png' %}" width="460" height="500" loading="lazy" alt="Vincent Cooper" class="img-cover">-->
+<!--            </div>-->
+<!--            <h3 class="h3">-->
+<!--              <a href="#" class="card-title">Vincent Cooper</a>-->
+<!--            </h3>-->
+<!--            <p class="card-subtitle">Dentist</p>-->
+<!--            <ul class="card-social-list">-->
+<!--              <li>-->
+<!--                <a href="#" class="card-social-link">-->
+<!--                  <ion-icon name="logo-facebook"></ion-icon>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="#" class="card-social-link">-->
+<!--                  <ion-icon name="logo-twitter"></ion-icon>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="#" class="card-social-link">-->
+<!--                  <ion-icon name="logo-instagram"></ion-icon>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--            </ul>-->
+<!--          </div>-->
+<!--        </li>-->
+<!--        <li class="scrollbar-item">-->
+<!--          <div class="doctor-card">-->
+<!--            <div class="card-banner img-holder" style="&#45;&#45;width: 460; &#45;&#45;height: 500;">-->
+<!--              <img src="{% static 'images/doctor-4.png' %}" width="460" height="500" loading="lazy" alt="Danielle Bryant" class="img-cover">-->
+<!--            </div>-->
+<!--            <h3 class="h3">-->
+<!--              <a href="#" class="card-title">Danielle Bryant</a>-->
+<!--            </h3>-->
+<!--            <p class="card-subtitle">Dentist</p>-->
+<!--            <ul class="card-social-list">-->
+<!--              <li>-->
+<!--                <a href="#" class="card-social-link">-->
+<!--                  <ion-icon name="logo-facebook"></ion-icon>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="#" class="card-social-link">-->
+<!--                  <ion-icon name="logo-twitter"></ion-icon>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="#" class="card-social-link">-->
+<!--                  <ion-icon name="logo-instagram"></ion-icon>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--            </ul>-->
+<!--          </div>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--    </div>-->
+<!--  </section>-->
+
+
+
+
+
+
+
+
+
+
+
+<section class="section doctor" style="background-image: url('{% static 'images/hero-bg.png'%}')" aria-label="doctor">
+  <div class="container">
+    <p class="section-subtitle text-center">Our Doctors</p>
+    <h2 class="h2 section-title text-center">We take pride in our exceptional team of doctors, each a specialist in their respective fields.</h2>
+
+    <div class="doctor-card-container has-scrollbar" style="display: flex; gap: 20px; overflow-x: auto; padding-bottom: 20px;">
+      {% for doctor in doctors %}
+      <div class="doctor-card scrollbar-item" style="flex: 0 0 200px; max-width: 200px; border: 1px solid var(--light-gray); border-radius: 8px; padding: 10px; text-align: center;">
+        <div class="card-banner img-holder" style="--width: 460; --height: 500;">
+
+          {% if doctor.doc_image %}
+            <img src="{{ doctor.doc_image.url }}" width="460" height="500" loading="lazy" alt="{{ doctor.first_name }} {{ doctor.last_name }}" class="img-cover" style="border-radius: 8px;">
+          {% else %}
+            <!-- You can add a placeholder image or leave this empty if no image is available -->
+            <img src="{% static 'images/placeholder-doctor.png' %}" width="460" height="500" loading="lazy" alt="No Image Available" class="img-cover" style="border-radius: 8px;">
+          {% endif %}
+        </div>
+        <h3 class="h3" style="margin-top: 10px; margin-bottom: 5px;">
+          <a href="#" class="card-title" style="font-size: 18px;">Dr. {{doctor.first_name}} {{doctor.last_name}}</a>
+        </h3>
+        <p class="card-subtitle" style="color: var(--royal-blue); font-size: 14px; margin-bottom: 5px;">{{doctor.doc_spec}}</p>
+        <div>
+          <p class="card-subtitle" style="color: var(--oxford-blue-1); font-size: 12px; margin-bottom: 0;">{{doctor.department.dep_name}} Department</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+  <!--contact-->
+  <section class="section hero" id="home" style="background-image: url('{% static 'images/hero-bg.png'%}')" aria-label="hero"> </section>
+  <section class="section cta" aria-label="cta">
+  <div class="container">
+    <figure class="cta-banner" style="margin-bottom: 45px;">
+      <img src="{% static 'images/cta-banner1.png' %}" width="1056" height="1076" loading="lazy" alt="cta banner" class="w-100"  />
+    </figure>
+
+    <div class="cta-content">
+      <p class="section-subtitle">Book Doctor Appointment</p>
+
+      <h2 class="h2 section-title">
+        We Are open And Welcoming Patients
+      </h2>
+
+      <a href="{% url 'dashboard_home' %}" class="btn">Book appointment</a>
+
+    </div>
+  </div>
+  </section>
+
+  {% endblock %}
+
+
+
+
+
+</body>
+
+
+</html>

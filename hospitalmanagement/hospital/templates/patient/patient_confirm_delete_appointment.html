@@ -1,0 +1,21 @@
+{% include 'patient/patient_navbar.html' %}
+
+{% block content %}
+<section class="section" id="delete-appointment" aria-label="delete-appointment">
+  <div class="container">
+    <div class="dashboard-card" style="box-shadow: var(--shadow-4); margin-bottom: 20px; padding: 30px; border: 1px solid var(--light-gray); border-radius: var(--radius-6); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+      <h2 class="h2 section-title">Confirm Deletion of Appointment</h2>
+      <br>
+      <p style="color: black;">Are you sure you want to delete the appointment with <b>{{ appointment.doctor.user.first_name }} {{ appointment.doctor.user.last_name }}</b> on <b>{{ appointment.date }}</b> at <b>{{ appointment.time }}</b>?</p>
+
+      <br><br>
+      <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Yes, delete</button>
+        <br><br>
+        <a href="{% url 'patient_appointment_list' %}" class="btn btn-secondary">Cancel</a>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}

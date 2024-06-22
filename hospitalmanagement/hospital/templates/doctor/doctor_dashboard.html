@@ -1,0 +1,22 @@
+{% include 'doctor/doctor_navbar.html' %}
+<!--it includes index(that contains styles,js,link) and navbar-->
+
+{% block content %}
+<section class="section dashboard" id="dashboard" aria-label="dashboard" style="margin-bottom:10px; width: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center;">
+  <div class="container">
+      <div class="dashboard-card" style="box-shadow: var(--shadow-4); margin-bottom: 20px; padding: 30px; border: 1px solid var(--light-gray); border-radius: var(--radius-6); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+            <p class="section-subtitle text-center">Doctor Dashboard</p>
+            <h2 class="h2 section-title text-center">Welcome, Dr. {{ user.first_name }} {{ user.last_name }}</h2>
+          <br>
+            <h3 class="h3 card-title" style="align-items:center; text-align:center; padding-bottom: 25px;">This is your doctor dashboard.</h3>
+          </div>
+      </div>
+
+  <div class="container">
+    <div class="dashboard-card" style="box-shadow: var(--shadow-4); margin-bottom: 20px; padding: 30px; border: 1px solid var(--light-gray); border-radius: var(--radius-6); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+      <h3 class="h3 card-title" style="align-items:center;">Your Recent Activities</h3>
+      <p class="card-text" style="padding-top: 10px;">Details about recent activities will be shown here.</p>
+    </div>
+  </div>
+</section>
+{% endblock %}

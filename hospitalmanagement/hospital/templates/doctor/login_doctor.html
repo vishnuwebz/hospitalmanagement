@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Login</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> <!-- Link to your CSS file -->
+
+    <style>
+        .form-container {
+            margin-top: 60px; /* Adjust margin to ensure space between logo and form */
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+   <div class="header-bottom" data-header>
+      <div class="container">
+         <a href="{% url 'homebase' %}" class="logo">Medico</a>
+      </div>
+   </div>
+</nav>
+
+<section>
+    <div class="form-container">
+        <form method="post" class="form">
+            <h1 class="form-title">Doctor Login</h1>
+
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="error" style="color: red;">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+
+            {% csrf_token %}
+
+            <label for="email" class="label">Email:</label>
+            <input type="email" id="email" name="email" class="input" required>
+
+            <label for="password" class="label">Password:</label>
+            <input type="password" id="password" name="password" class="input" required>
+
+            <button type="submit" class="btn btn-primary">Login</button>
+            <br>
+            <div class="text-center">Don't have an account? <a href="{% url 'doctor_register' %}" class="blue-link">Register here</a></div>
+        </form>
+
+        <div style="margin-left:10px;"><button onclick="window.history.back()" class="btn btn-primary">Go Back</button></div>
+    </div>
+</section>
+</body>
+</html>

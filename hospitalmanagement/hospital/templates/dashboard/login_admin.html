@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+<!--{% include 'dashboard/inline_css.html' %}-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> <!-- Link to your CSS file -->
+</head>
+{% block content %}
+<body>
+    <nav>
+        <div class="header-bottom" data-header>
+            <div class="container">
+                <a href="{% url 'homebase' %}" class="logo">Medico</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="form-container">
+        <form method="post" class="form">
+            <h1 class="form-title">Admin Login</h1>
+
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="error">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+
+            {% csrf_token %}
+
+            <label for="username" class="label">Username:</label>
+            <input type="text" id="username" name="username" class="input" required>
+
+            <label for="password" class="label">Password:</label>
+            <input type="password" id="password" name="password" class="input" required>
+
+            <button type="submit" class="btn btn-primary">Login</button>
+            <br>
+            <div class="text-center">Don't have an account? <a href="{% url 'admin_register' %}" class="blue-link">Register here</a></div>
+            <br>
+            <div style="margin-left:0px;"><button onclick="window.history.back()" class="btn btn-primary">Go Back</button></div>
+
+        </form>
+    </div>
+</body>
+{% endblock %}
+</html>

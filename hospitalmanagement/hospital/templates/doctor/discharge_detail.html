@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+{% load static %}
+{% include 'doctor/doctor_navbar.html' %}
+
+<title>Patient Discharge Summary</title>
+
+{% block content %}
+  <section class="section dashboard" id="dashboard" aria-label="dashboard" style="margin-bottom: 10px; width: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center;">
+    <div class="container">
+      <div class="dashboard-card" style="box-shadow: var(--shadow-4); margin-bottom: 20px; padding: 30px; border: 1px solid var(--light-gray); border-radius: var(--radius-6); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <p class="section-subtitle text-center">Doctor Dashboard</p>
+        <h2 class="h2 section-title text-center">Discharge Details</h2>
+      </div>
+    </div>
+    <br><br>
+
+    <div class="container">
+      <div class="dashboard-card" style="box-shadow: var(--shadow-4); margin-bottom: 20px; padding: 30px; border: 1px solid var(--light-gray); border-radius: var(--radius-6); text-align: left; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <h3 class="h3 card-title">Discharge Information for {{ discharge.patient.first_name }} {{ discharge.patient.last_name }}</h3>
+        <br><br><br>
+<!--        <ul style="padding: 30px;">-->
+<!--          <li><strong>Discharge Date:</strong> {{ discharge.discharge_date }}</li>-->
+<!--          <li><strong>Discharge Reason:</strong> {{ discharge.discharge_reason }}</li>-->
+<!--          <li><strong>Discharge Note:</strong> {{ discharge.discharge_note }}</li>-->
+<!--          <li><strong>Patient Name:</strong> {{ discharge.patient.first_name }} {{ discharge.patient.last_name }}</li>-->
+<!--          <li><strong>Patient Email:</strong> {{ discharge.patient.email }}</li>-->
+<!--          <li><strong>Patient Contact:</strong> {{ discharge.patient.contact }}</li>-->
+<!--          <li><strong>Date of Birth:</strong> {{ discharge.patient.date_of_birth }}</li>-->
+<!--          <li><strong>Address:</strong> {{ discharge.patient.address }}</li>-->
+<!--          <li><strong>Gender:</strong> {{ discharge.patient.gender }}</li>-->
+<!--          <li><strong>Medical History:</strong> {{ discharge.patient.medical_history }}</li>-->
+<!--        </ul>-->
+
+
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong style="color: black;">Discharge Date:</strong> {{ discharge.discharge_date }}</li>
+            <li class="list-group-item"><strong style="color: black;">Discharge Reason:</strong> {{ discharge.discharge_reason }}</li>
+            <li class="list-group-item"><strong style="color: black;">Discharge Note:</strong> {{ discharge.discharge_note }}</li>
+            <li class="list-group-item"><strong style="color: black;">Patient Name:</strong> {{ discharge.patient.first_name }} {{ discharge.patient.last_name }}</li>
+            <li class="list-group-item"><strong style="color: black;">Email:</strong> {{ discharge.patient.email }}</li>
+            <li class="list-group-item"><strong style="color: black;">Contact:</strong> {{ discharge.patient.contact }}</li>
+            <li class="list-group-item"><strong style="color: black;">Date of Birth:</strong> {{ discharge.patient.date_of_birth }}</li>
+            <li class="list-group-item"><strong style="color: black;">Address:</strong> {{ discharge.patient.address }}</li>
+            <li class="list-group-item"><strong style="color: black;">Gender:</strong> {{ discharge.patient.gender }}</li>
+            <li class="list-group-item"><strong style="color: black;">Medical History:</strong> {{ discharge.patient.medical_history }}</li>
+            <li class="list-group-item"><strong style="color: black;">Discharged by:</strong> Dr. {{ discharge.doctor.first_name }} {{ discharge.doctor.last_name }} ({{ discharge.doctor.department.dep_name }})</li>
+
+          </ul>
+
+
+        <a href="javascript:history.back()" class="btn-primary" style="margin-top: 20px;">Go Back</a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .dashboard-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+
+    .list-group {
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .list-group-item {
+      padding: 1rem 0;
+      border: none;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #007bff;
+      border: none;
+      border-radius: var(--radius-6);
+      text-align: center;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+    }
+
+    .btn-secondary,
+    .btn-danger {
+      display: inline-block;
+      padding: 5px 10px;
+      font-size: 14px;
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-6);
+      text-align: center;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      white-space: nowrap; /* Ensures button does not wrap */
+    }
+
+    .btn-secondary.btn-sm,
+    .btn-danger.btn-sm {
+      padding: 5px 12px;
+      font-size: 14px;
+    }
+
+    .btn-secondary {
+      background-color: #6c757d;
+    }
+
+    .btn-secondary:hover {
+      background-color: #5a6268;
+    }
+
+    .btn-danger {
+      background-color: #dc3545;
+    }
+
+    .btn-danger:hover {
+      background-color: #c82333;
+    }
+
+    .table {
+      width: 100%;
+      margin-bottom: 1rem;
+      color: #212529;
+      border-collapse: collapse;
+    }
+
+    .table th,
+    .table td {
+      padding: 0.75rem;
+      vertical-align: top;
+      border-top: 1px solid #dee2e6;
+    }
+
+    .table thead th {
+      vertical-align: bottom;
+      border-bottom: 2px solid #dee2e6;
+    }
+
+    .table-bordered {
+      border: 1px solid #dee2e6;
+    }
+
+    .table-bordered th,
+    .table-bordered td {
+      border: 1px solid #dee2e6;
+    }
+
+    .table-bordered thead th,
+    .table-bordered thead td {
+      border-bottom-width: 2px;
+    }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+  </style>
+{% endblock %}

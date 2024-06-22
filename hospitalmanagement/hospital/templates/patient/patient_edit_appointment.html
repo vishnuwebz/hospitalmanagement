@@ -1,0 +1,136 @@
+{% include "patient/patient_navbar.html" %}
+
+{% block content %}
+<section class="section dashboard" id="dashboard" aria-label="dashboard" style="margin-bottom: 10px; width: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center;">
+  <div class="container">
+    <div class="dashboard-card" style="box-shadow: var(--shadow-4); margin-bottom: 20px; padding: 30px; border: 1px solid var(--light-gray); border-radius: var(--radius-6); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+      <p class="section-subtitle text-center">Patient Dashboard</p>
+      <h2 class="h2 section-title text-center">Edit Appointment</h2>
+    </div>
+  </div>
+  <br><br>
+
+  <div class="container">
+    <div class="dashboard-card" style="box-shadow: var(--shadow-4); margin-bottom: 20px; padding: 30px; border: 1px solid var(--light-gray); border-radius: var(--radius-6); text-align: left; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+      <div class="row justify-content-center">
+        <div class="col-md-4">
+          <div style="padding: 30px; text-align: left;">
+            <h3 class="h3 card-title">About This:</h3>
+            <p class="card-text">Edit patient appointment details directly.</p>
+          </div>
+        </div>
+        <div class="form-container">
+          <form method="post" class="form">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="doctor" class="label">Doctor:</label>
+              <select class="form-control input" id="doctor" name="doctor" required>
+                <option value="">Select Doctor</option>
+                {% for doctor_id, doctor_name in doctor_choices %}
+                  <option value="{{ doctor_id }}" {% if doctor_id == appointment.doctor.id %}selected{% endif %}>{{ doctor_name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="date" class="label">Date:</label>
+              <input type="date" class="form-control input" id="date" name="date" value="{{ appointment.date }}" required>
+            </div>
+            <div class="form-group">
+              <label for="time" class="label">Time:</label>
+              <input type="time" class="form-control input" id="time" name="time" value="{{ appointment.time }}" required>
+            </div>
+            <div class="form-group">
+              <label for="symptoms" class="label">Symptoms:</label>
+              <textarea class="form-control input" id="symptoms" name="symptoms" rows="3" required>{{ appointment.symptoms }}</textarea>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th colspan="2" style="background-color: #000; color: #fff;">Currently Booked</th>
+                  </tr>
+
+                </thead>
+
+                <tbody>
+
+                  <tr>
+                    <td style="width: 40%;"><strong style="color: black;">Date:</strong></td>
+                    <td>{{ appointment.date }}</td>
+                  </tr>
+                  <tr>
+                    <td><strong style="color: black;">Time:</strong></td>
+                    <td>{{ appointment.time }}</td>
+                  </tr>
+                </tbody>
+
+              </table>
+            </div>
+
+            <br><br>
+
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-save"></i> Save Changes
+            </button>
+            <br><br>
+            <a href="{% url 'patient_appointment_list' %}" class="btn btn-secondary">Go Back</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .form-container {
+    width: 50%;
+    margin: 0 auto; /* This centers the form */
+    background: none;
+  }
+
+  .dashboard-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: var(--radius-6);
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+
+  .btn-secondary {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #6c757d;
+    border: none;
+    border-radius: var(--radius-6);
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-secondary:hover {
+    background-color: #5a6268;
+  }
+</style>
+{% endblock %}

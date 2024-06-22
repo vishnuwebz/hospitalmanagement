@@ -1,0 +1,174 @@
+{% include 'doctor/doctor_navbar.html' %}
+
+{% block content %}
+  <section class="section dashboard" id="dashboard" aria-label="dashboard" style="margin-bottom: 10px; width: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center;">
+    <div class="container">
+      <div class="dashboard-card" style="box-shadow: var(--shadow-4); margin-bottom: 20px; padding: 30px; border: 1px solid var(--light-gray); border-radius: var(--radius-6); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <p class="section-subtitle text-center">Doctor Dashboard</p>
+        <h2 class="h2 section-title text-center">Discharge List</h2>
+      </div>
+    </div>
+    <br><br>
+
+    <div class="container">
+      <div class="dashboard-card" style="box-shadow: var(--shadow-4); margin-bottom: 20px; padding: 30px; border: 1px solid var(--light-gray); border-radius: var(--radius-6); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <h3 class="h3 card-title" style="align-items:center;">Discharges</h3>
+        <div style="padding: 30px; text-align: left;">
+          <h3 class="h3 card-title">About This:</h3>
+          <p class="card-text">Doctor can view the list of discharged patients.</p>
+        </div>
+
+        <div style="overflow-x:auto;">
+          <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+              <tr>
+                <th>Patient</th>
+                <th>Doctor</th>
+                <th>Discharge Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for discharge in discharges %}
+                <tr>
+                  <td>{{ discharge.patient }}</td>
+                  <td>{{ discharge.doctor }}</td>
+                  <td>{{ discharge.discharge_date }}</td>
+                  <td>
+                    <a href="{% url 'discharge_detail' discharge.id %}" class="btn btn-secondary btn-sm">View Discharge</a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .dashboard-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #007bff;
+      border: none;
+      border-radius: var(--radius-6);
+      text-align: center;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+    }
+
+    .btn-danger {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #dc3545;
+      border: none;
+      border-radius: var(--radius-6);
+      text-align: center;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-danger:hover {
+      background-color: #c82333;
+    }
+
+    .table {
+      width: 100%;
+      margin-bottom: 1rem;
+      color: #212529;
+      border-collapse: collapse;
+    }
+
+    .table th,
+    .table td {
+      padding: 0.75rem;
+      vertical-align: top;
+      border-top: 1px solid #dee2e6;
+    }
+
+    .table thead th {
+      vertical-align: bottom;
+      border-bottom: 2px solid #dee2e6;
+    }
+
+    .table tbody + tbody {
+      border-top: 2px solid #dee2e6;
+    }
+
+    .table-bordered {
+      border: 1px solid #dee2e6;
+    }
+
+    .table-bordered th,
+    .table-bordered td {
+      border: 1px solid #dee2e6;
+    }
+
+    .table-bordered thead th,
+    .table-bordered thead td {
+      border-bottom-width: 2px;
+    }
+
+    .thead-dark th {
+      color: #fff;
+      background-color: #343a40;
+      border-color: #454d55;
+    }
+
+    .thead-light th {
+      color: #495057;
+      background-color: #e9ecef;
+      border-color: #dee2e6;
+    }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .btn-secondary,
+    .btn-danger {
+      display: inline-block;
+      padding: 5px 10px;
+      font-size: 14px;
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-6);
+      text-align: center;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      white-space: nowrap; /* Ensures button does not wrap */
+    }
+
+    .btn-secondary.btn-sm,
+    .btn-danger.btn-sm {
+      padding: 5px 12px;
+      font-size: 14px;
+    }
+
+    .btn-secondary {
+      background-color: #6c757d;
+    }
+
+    .btn-danger {
+      background-color: #dc3545;
+    }
+  </style>
+{% endblock %}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Registration</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> <!-- Link to your CSS file -->
+
+    <style>
+        .form-container {
+            margin-top: 60px; /* Adjust margin to ensure space between logo and form */
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+   <div class="header-bottom" data-header>
+      <div class="container">
+         <a href="{% url 'homebase' %}" class="logo">Medico</a>
+      </div>
+   </div>
+</nav>
+
+<section>
+    <div class="form-container">
+        <form method="post" class="form" enctype="multipart/form-data">
+            <h1 class="form-title">Register as a Doctor</h1>
+
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="error" style="color: red;">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+
+            {% csrf_token %}
+
+            <label for="first_name" class="label">First Name:</label>
+            <input type="text" id="first_name" name="first_name" class="input" required>
+
+            <label for="last_name" class="label">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" class="input" required>
+
+            <label for="email" class="label">Email (for Login):</label>
+            <input type="email" id="email" name="email" class="input" required>
+
+            <label for="password1" class="label">Password:</label>
+            <input type="password" id="password1" name="password1" class="input" required>
+
+            <label for="password2" class="label">Confirm Password:</label>
+            <input type="password" id="password2" name="password2" class="input" required>
+
+            <label for="contact" class="label">Contact:</label>
+            <input type="text" id="contact" name="contact" class="input" required>
+
+            <label for="department" class="label">Department:</label>
+            <select id="department" name="department" class="input" required>
+                {% for department in departments %}
+                    <option value="{{ department.id }}">{{ department.dep_name }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="doc_spec" class="label">Specialization:</label>
+            <input type="text" id="doc_spec" name="doc_spec" class="input" required>
+
+            <label for="availability" class="label">Availability:</label>
+            <select id="availability" name="availability" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+            <label for="doc_image" class="label">Doctor Image:</label>
+            <input type="file" id="doc_image" name="doc_image">
+            <br>
+            <button type="submit" class="btn btn-primary">Register</button>
+            <br>
+            <div class="text-center">Already have an account? <a href="{% url 'doctor_login' %}" class="blue-link">Login here</a></div>
+        </form>
+
+        <div style="margin-left:10px;"><button onclick="window.history.back()" class="btn btn-primary">Go Back</button></div>
+    </div>
+</section>
+</body>
+</html>

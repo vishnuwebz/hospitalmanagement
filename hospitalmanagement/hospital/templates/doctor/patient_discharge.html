@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+{% load static %}
+{% include 'doctor/doctor_navbar.html' %}
+
+<title>Patient Discharge Summary</title>
+
+{% block content %}
+<section class="section dashboard" id="dashboard" aria-label="dashboard" style="margin-bottom: 10px; width: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center;">
+  <div class="container">
+    <div class="dashboard-card" style="box-shadow: var(--shadow-4); margin-bottom: 20px; padding: 30px; border: 1px solid var(--light-gray); border-radius: var(--radius-6); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+      <p class="section-subtitle text-center">Doctor Dashboard</p>
+      <h2 class="h2 section-title text-center">Discharge Patient</h2>
+    </div>
+  </div>
+  <br><br>
+
+  <div class="container" style="text-align: center;">
+    <div class="dashboard-card" style="box-shadow: var(--shadow-4); margin-bottom: 20px; padding: 30px; border: 1px solid var(--light-gray); border-radius: var(--radius-6); text-align: left; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+      <div class="row justify-content-center">
+        <div class="col-md-4">
+          <div style="padding: 30px; text-align: left;">
+            <h3 class="h3 card-title">About This:</h3>
+            <p class="card-text">Doctor can view and manage the discharge of patients.</p>
+          </div>
+        </div>
+        <div class="form-container">
+          <form action="" method="post" class="form">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="discharge_date" class="label">Discharge Date:</label>
+              <input type="date" id="discharge_date" name="discharge_date" class="input" required>
+            </div>
+            <div class="form-group">
+              <label for="discharge_reason" class="label">Discharge Reason:</label>
+              <textarea id="discharge_reason" name="discharge_reason" class="input" required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="discharge_note" class="label">Discharge Note:</label>
+              <textarea id="discharge_note" name="discharge_note" class="input" required></textarea>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">
+                <i class="fas fa-save"></i> Discharge Patient
+              </button>
+              <br><br>
+              <a href="{% url 'doctor_dashboard' %}" class="btn btn-secondary" style="margin-left: 0px;">Go Back</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<br>
+
+<style>
+  .form-container {
+    width: 50%;
+    margin: 0 auto; /* This centers the form */
+    background: none;
+  }
+
+  .dashboard-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .input {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid var(--light-gray);
+    border-radius: var(--radius-6);
+    font-size: 16px;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: var(--radius-6);
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+
+  .btn-secondary {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #6c757d;
+    border: none;
+    border-radius: var(--radius-6);
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+  }
+
+  .btn-secondary:hover {
+    background-color: #5a6268;
+  }
+</style>
+{% endblock %}

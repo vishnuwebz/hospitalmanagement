@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% load static %}
+{% include 'dashboard/inline_css.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Registration</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> <!-- Link to your CSS file -->
+
+</head>
+<body>
+<nav>
+   <div class="header-bottom" data-header>
+      <div class="container">
+         <a href="{% url 'homebase' %}" class="logo">Medico</a>
+      </div>
+   </div>
+</nav>
+
+<div class="form-container">
+    <form method="post" class="form">
+        {% csrf_token %}
+
+        <h1 class="form-title">Register as a Patient</h1>
+
+        {% if error %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
+
+
+        <label for="first_name" class="label">First Name:</label>
+        <input type="text" id="first_name" name="first_name" class="input" required>
+
+
+
+        <label for="last_name" class="label">Last Name:</label>
+        <input type="text" id="last_name" name="last_name" class="input" required>
+
+
+        <label for="email" class="label">Email:</label>
+        <input type="email" id="email" name="email" class="input" required>
+
+        <label for="contact" class="label">Contact:</label>
+        <input type="text" id="contact" name="contact" class="input" required>
+
+        <label for="password1" class="label">Password:</label>
+        <input type="password" id="password1" name="password1" class="input" required>
+
+        <label for="password2" class="label">Confirm Password:</label>
+        <input type="password" id="password2" name="password2" class="input" required>
+
+        <button type="submit" class="btn btn-primary">Register</button>
+        <br>
+        <div class="text-center">Already have an account? <a href="{% url 'patient_login' %}" class="blue-link" >Login here</a></div>
+        <div style="margin-top:10px;"><button onclick="window.history.back()" class="btn btn-primary">Go Back</button></div>
+    </form>
+<!--            <div style="margin-left:10px;"><button onclick="window.history.back()" class="btn btn-primary">Go Back</button></div>-->
+
+</div>
+
+</body>
+</html>

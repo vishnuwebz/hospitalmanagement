@@ -1,0 +1,30 @@
+{% load static %}
+
+      <section class="section hero" id="home" style="background-image: url('{% static 'images/hero-bg.png'%}');" aria-label="hero">
+        <div class="container">
+
+          <div class="hero-content">
+
+            <p class="section-subtitle">Welcome To Medico</p>
+
+            <h1 class="h1 hero-title">We Are Best on Providing an Exceptional Patient Experience</h1>
+
+            <p class="hero-text">
+                Welcome, where exceptional patient experiences are our priority. With compassionate care, state-of-the-art facilities, and a patient-centered approach, we're dedicated to your well-being. Trust us with your health and
+                experience the difference.
+            </p>
+
+            <form action="" class="hero-form">
+              <input type="email" name="email_address" aria-label="email" placeholder="Your Email Address..." required class="email-field">
+
+              <button type="submit" class="btn">Get Call Back</button>
+            </form>
+
+          </div>
+
+          <figure class="hero-banner">
+            <img src="{% static 'images/hero-banner.png' %}" width="587" height="839" alt="hero banner" class="w-100">
+          </figure>
+
+        </div>
+      </section>

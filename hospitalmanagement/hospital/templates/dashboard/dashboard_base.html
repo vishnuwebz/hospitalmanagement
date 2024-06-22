@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dashboard home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<!--    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />-->
+    <!--
+    - google font link
+  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Roboto:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
+
+  <style>
+
+    :root{
+      --light-steel-blue: hsl(218, 33%, 77%);
+      --royal-blue-light: hsl(225, 68%, 53%);
+      --flickr-blue_30: hsla(225, 68%, 53%, 0.3);
+      --carolina-blue: hsl(201, 92%, 47%);
+      --oxford-blue-1: hsl(218, 70%, 18%);
+      --oxford-blue-2: hsl(217, 100%, 12%);
+      --oxford-blue-3: hsl(218, 71%, 11%);
+      --gainsboro_50: hsla(0, 0%, 85%, 0.5);
+      --lavender-web: hsl(225, 67%, 91%);
+      --sonic-silver: hsl(0, 0%, 47%);
+      --light-gray: hsl(0, 0%, 84%);
+      --cultured: hsl(0, 0%, 97%);
+      --black_10: hsla(0, 0%, 0%, 0.1);
+      --black_8: hsla(0, 0%, 0%, 0.08);
+      --white: hsl(0, 0%, 100%);
+      --black: hsl(0, 0%, 0%);
+      --jet: hsl(0, 0%, 20%);
+      --gradient: linear-gradient( 90deg, var(--carolina-blue) 0%, var(--royal-blue-light) 100%);
+      --ff-roboto: "Roboto", sans-serif;
+      --ff-poppins: "Poppins", sans-serif;
+      --fs-1: 4rem;
+      --fs-2: 3.6rem;
+      --fs-3: 3.2rem;
+      --fs-4: 2.4rem;
+      --fs-5: 2.2rem;
+      --fs-6: 1.8rem;
+      --fs-7: 1.6rem;
+
+      --fw-800: 800;
+      --fw-700: 700;
+      --fw-600: 600;
+      --fw-500: 500;
+
+
+
+      .h2 {
+        font-family: var(--ff-poppins);
+        line-height: 1.2;
+      }
+
+
+
+
+      .h2 {
+        color: var(--oxford-blue-2);
+      }
+
+      .h2 {
+        font-size: var(--fs-1);
+}
+    }
+        .navbar {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          padding-top: 1rem;
+          padding-bottom: 1rem;
+          z-index: 1030;
+        }
+
+        .navbar.active {
+          position: fixed;
+          background-color: #fff;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          animation: slideIn 0.5s ease-out forwards;
+        }
+
+        @keyframes slideIn {
+          0% {
+            transform: translateY(-100%);
+          }
+          100% {
+            transform: translateY(0);
+          }
+        }
+
+        .logo {
+          color: #212529;
+          font-family: 'Poppins', sans-serif;
+          font-size: 1.75rem;
+          font-weight: 800;
+        }
+
+        .navbar-nav .nav-link {
+          color: #495057;
+          font-weight: 600;
+          text-transform: uppercase;
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+
+        .navbar-nav .nav-link.active,
+        .navbar-nav .nav-link:hover {
+          color: #212529;
+        }
+
+        .btn-primary {
+          background-color: #007bff;
+          border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+          background-color: #0056b3;
+          border-color: #004a9b;
+        }
+
+        .navbar.active {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          background-color: #fff;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+          animation: slideDown 0.5s ease-out forwards;
+        }
+
+        @keyframes slideDown {
+          0% {
+            transform: translateY(-100%);
+          }
+          100% {
+            transform: translateY(0);
+          }
+        }
+
+        .btn-admin {
+          background-color: #ff0000; /* Red color for Admin */
+        }
+
+        .btn-doctor {
+          background-color: #90ee90; /* Light Green color for Doctor */
+        }
+
+        .btn-patient {
+          background-color: #add8e6; /* Light Blue color for Patient */
+        }
+
+        /* Additional CSS for centering the buttons */
+        .navbar-nav {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+        }
+
+        .navbar-nav .nav-item {
+          margin: 0 10px; /* Adjust spacing between buttons */
+        }
+
+        .navbar-nav .nav-link {
+          color: #fff; /* Text color for the buttons */
+          font-weight: bold;
+          text-transform: uppercase;
+          padding: 10px 20px;
+          border-radius: 5px;
+        }
+
+        .navbar-nav .nav-link:hover {
+          text-decoration: none;
+        }
+
+        .navbar-brand.logo {
+          background-color: #365ed9; /* Light Royal Blue color */
+          border-radius: 5px;
+          padding: 5px 10px; /* Adjust padding as needed */
+          color: #fff; /* Text color */
+        }
+
+      .service-card:hover {
+        transform: scale(1.1);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+
+    </style>
+</head>
+<body>
+
+{% include 'dashboard/dash_nav_base.html' %}
+
+
+
+
+
+
+
+
+
+{% block content %}
+<section style="background-image: url('{% static 'images/hero-bg.png'%}');width: 100%; background-size: cover;">
+        <div class="container">
+
+
+          <h2 class="h2 section-title text-center" style="padding-top: 10px;">Your Dashboard</h2>
+        </div>
+
+
+
+    <section class="section service" id="service" aria-label="service" style="margin-bottom:10px; background-image: url('{% static 'images/hero-bg.png'%}'); width: 100%; background-size: cover;background-repeat: no-repeat; background-position: center center;">
+      <div class="container" >
+        <div class="row justify-content-center align-items-center" style="height: 80vh;">
+          <div class="col-md-4">
+            <a href="{% url 'admin_signup' %}" class="text-decoration-none">
+              <div class="service-card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0px 10px 30px #c2cef34c; margin-bottom: 20px; padding: 30px; border: 1px solid #d6d6d6; border-radius: 6px; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+
+                <div>
+                  <div class="card-icon">
+                    <span><i class="ri-admin-fill" style="width:100;"></i></span>
+                  </div>
+                  <h3 class="h3 card-title">Admin</h3>
+                  <p class="card-text">Access administrative features and manage the system.</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <a href="{% url 'doctor_register' %}" class="text-decoration-none">
+              <div class="service-card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0px 10px 30px #c2cef34c; margin-bottom: 20px; padding: 42px; border: 1px solid #d6d6d6; border-radius: 6px; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%;">
+
+                <div>
+                  <div class="card-icon">
+                    <span><i class="ri-nurse-fill" style="width:100;"></i></span>
+                  </div>
+                  <h3 class="h3 card-title">Doctor</h3>
+                  <p class="card-text">Manage patient records and appointments.</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <a href="{% url 'patient_register' %}" class="text-decoration-none">
+              <div class="service-card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0px 10px 30px #c2cef34c; margin-bottom: 20px; padding: 30px; border: 1px solid #d6d6d6; border-radius: 6px; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+
+                <div>
+                  <div class="card-icon">
+                    <span><i class="ri-user-fill" style="width:100;"></i></span>
+                  </div>
+                  <h3 class="h3 card-title">Patient</h3>
+                  <p class="card-text">Access medical records and schedule appointments.</p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+</section>
+
+
+
+{% endblock %}
+
+
+</body>
+</html>

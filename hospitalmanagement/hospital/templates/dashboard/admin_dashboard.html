@@ -1,0 +1,46 @@
+
+
+
+
+
+
+
+{% include "dashboard/admin_navbar.html" %}
+
+{% block content %}
+<section class="section dashboard" id="dashboard" aria-label="dashboard" style="margin-bottom:10px; width: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center;">
+  <div class="container">
+    <div class="dashboard-card" style="box-shadow: var(--shadow-4); margin-bottom: 20px; padding: 30px; border: 1px solid var(--light-gray); border-radius: var(--radius-6); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+
+      <p class="section-subtitle text-center">Admin Dashboard</p>
+      <h2 class="h2 section-title text-center">Welcome, {{ user.username }} </h2>
+      <br>
+      <h3 class="h3 card-title" style="align-items:center; text-align:center; padding-bottom: 25px;">This is your admin dashboard.</h3>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="dashboard-card" style="box-shadow: var(--shadow-4); margin-bottom: 20px; padding: 30px; border: 1px solid var(--light-gray); border-radius: var(--radius-6); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+      <h3 class="h3 card-title" style="align-items:center;">Dashboard Overview</h3>
+      <ul class="card-text" style="padding-top: 10px; list-style-type: none; padding-left: 0;">
+        <li>Total Patients: {{patient_count}}</li>
+        <li>Total Doctors: {{doctor_count}}</li>
+        <li>Total Billings: {{billing_count}}</li>
+        <li><b>Total Revenue: {{total_revenue}}</b></li>
+      </ul>
+      <div style="text-align: center;">
+      <a href="{% url 'report' %}" class="navbar-link" data-nav-link>For More Details With Graphical Representation Click Here</a>
+    </div>
+    </div>
+  </div>
+</section>
+<br>
+
+<style>
+  li {
+  color: var(--jet);
+  }
+</style>
+
+{% endblock %}
+

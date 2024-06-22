@@ -1,0 +1,36 @@
+{% include 'dashboard/inline_css.html' %}
+{% load static %}
+{% block content %}
+
+<section class="section doctor" style="background-image: url('{% static 'images/hero-bg.png'%}')" aria-label="doctor">
+  <div class="container">
+    <p class="section-subtitle text-center">Our Doctors</p>
+    <h2 class="h2 section-title text-center">We take pride in our exceptional team of doctors, each a specialist in their respective fields.</h2>
+
+    <div class="doctor-card-container has-scrollbar" style="display: flex; gap: 20px; overflow-x: auto; padding-bottom: 20px;">
+      {% for doctor in doctors %}
+      <div class="doctor-card scrollbar-item" style="flex: 0 0 200px; max-width: 200px; border: 1px solid var(--light-gray); border-radius: 8px; padding: 10px; text-align: center;">
+        <div class="card-banner img-holder" style="--width: 460; --height: 500;">
+
+          {% if doctor.doc_image %}
+            <img src="{{ doctor.doc_image.url }}" width="460" height="500" loading="lazy" alt="{{ doctor.first_name }} {{ doctor.last_name }}" class="img-cover" style="border-radius: 8px;">
+          {% else %}
+            <!-- You can add a placeholder image or leave this empty if no image is available -->
+            <img src="{% static 'images/default-doctor.png' %}" width="460" height="500" loading="lazy" alt="Default Image" class="img-cover" style="border-radius: 8px;">
+          {% endif %}
+        </div>
+        <h3 class="h3" style="margin-top: 10px; margin-bottom: 5px;">
+          <a href="#" class="card-title" style="font-size: 18px;">Dr. {{doctor.first_name}} {{doctor.last_name}}</a>
+        </h3>
+        <p class="card-subtitle" style="color: var(--royal-blue); font-size: 14px; margin-bottom: 5px;">{{doctor.doc_spec}}</p>
+        <div>
+          <p class="card-subtitle" style="color: var(--oxford-blue-1); font-size: 12px; margin-bottom: 0;">{{doctor.department.dep_name}} Department</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% include 'patient/patient_navbar.html' %}
+
+{% block content %}
+<section class="section patient" id="appointments" aria-label="appointments" style="margin-bottom: 10px;">
+  <div class="container">
+    <div class="dashboard-card" style="box-shadow: var(--shadow-4); margin-bottom: 20px; padding: 30px; border: 1px solid var(--light-gray); border-radius: var(--radius-6); text-align: left; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+      <p class="section-subtitle text-center">Patient Dashboard</p>
+      <h2 class="h2 section-title text-center">Your Appointments</h2>
+      <br><br>
+      <ul class="list-group">
+        {% for appointment in appointments %}
+        <li class="list-group-item">
+          <strong style="color:black;">Doctor:</strong> Dr. {{ appointment.doctor.user.first_name }} {{ appointment.doctor.user.last_name }} - ({{ appointment.doctor.department.dep_name }} Department)<br>
+          <strong style="color:black;">Date:</strong> {{ appointment.date }}<br>
+          <strong style="color:black;">Time:</strong> {{ appointment.time }}<br>
+          <strong style="color:black;">Symptoms:</strong> {{ appointment.symptoms }}<br><br>
+          <a href="{% url 'patient_delete_appointment' appointment.id %}" class="btn btn-danger btn-sm float-right">Delete</a>
+          <br><br>
+          <a href="{% url 'patient_edit_appointment' appointment.id %}" class="btn btn-primary btn-sm float-right mr-2">Edit</a>
+        </li>
+        <br><br><br>
+        {% empty %}
+        <li class="list-group-item list-group-item-warning">No appointments scheduled.</li>
+        {% endfor %}
+      </ul>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}

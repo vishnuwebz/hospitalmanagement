@@ -1,0 +1,148 @@
+{% include "dashboard/admin_navbar.html" %}
+
+{% block content %}
+<section class="section dashboard" id="dashboard" aria-label="dashboard" style="margin-bottom: 10px; width: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center;">
+  <div class="container">
+    <div class="dashboard-card" style="box-shadow: var(--shadow-4); margin-bottom: 20px; padding: 30px; border: 1px solid var(--light-gray); border-radius: var(--radius-6); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+      <p class="section-subtitle text-center">Admin Dashboard</p>
+      <h2 class="h2 section-title text-center">Reports</h2>
+    </div>
+  </div>
+  <br><br>
+
+  <div class="container" style="text-align: center;">
+    <div class="dashboard-card" style="box-shadow: var(--shadow-4); margin-bottom: 20px; padding: 30px; border: 1px solid var(--light-gray); border-radius: var(--radius-6); text-align: left; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+      <div style="padding: 30px; text-align: center;">
+        <h3 class="h3 card-title">About This:</h3>
+        <p class="card-text">Admin can view overall total reports.</p>
+      </div>
+      <ul style="text-align: center;">
+        <li>Total Patients: {{ patient_count }}</li>
+        <br>
+        <li>Total Doctors: {{ doctor_count }}</li>
+        <br>
+        <li>Total Billings: {{ billing_count }}</li>
+        <br>
+        <li><b>Total Revenue: <u>{{ total_revenue }}</u></b></li>
+      </ul>
+      <br><br>
+      <!-- Add container for the chart -->
+      <div class="chart-container" style="position: relative; height: 300px; width: 80%; margin: 0 auto;">
+        <canvas id="reportChart"></canvas>
+      </div>
+
+      <!-- Add container for the bar chart -->
+      <div class="chart-container" style="position: relative; height: 300px; width: 80%; margin: 0 auto;">
+        <canvas id="barChart"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .dashboard-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .chart-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px; /* Adjust margin as needed */
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: var(--radius-6);
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+
+
+  li {
+  color: var(--jet);
+  }
+
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Pie chart
+  var ctxPie = document.getElementById('reportChart').getContext('2d');
+  var myPieChart = new Chart(ctxPie, {
+    type: 'pie',
+    data: {
+      labels: ['Patients', 'Doctors'],
+      datasets: [{
+        label: 'Total Patients and Doctors',
+        data: [{{ patient_count }}, {{ doctor_count }}],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.7)',
+          'rgba(54, 162, 235, 0.7)'
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      legend: {
+        position: 'bottom',
+      }
+    }
+  });
+
+  // Bar chart
+  var ctxBar = document.getElementById('barChart').getContext('2d');
+  var myBarChart = new Chart(ctxBar, {
+    type: 'bar',
+    data: {
+      labels: ['Total Billings', 'Total Revenue'],
+      datasets: [{
+        label: 'Financial Summary',
+        data: [{{ billing_count }}, {{ total_revenue }}],
+        backgroundColor: [
+          'rgba(255, 159, 64, 0.7)',
+          'rgba(75, 192, 192, 0.7)'
+        ],
+        borderColor: [
+          'rgba(255, 159, 64, 1)',
+          'rgba(75, 192, 192, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      legend: {
+        position: 'bottom',
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+});
+</script>
+{% endblock %}

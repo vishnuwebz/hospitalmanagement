@@ -1,0 +1,101 @@
+{% include 'patient/patient_navbar.html' %}
+
+{% block content %}
+<section class="section dashboard" id="dashboard" aria-label="dashboard" style="margin-bottom: 10px; width: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center;">
+  <div class="container">
+    <div class="dashboard-card" style="box-shadow: var(--shadow-4); margin-bottom: 20px; padding: 30px; border: 1px solid var(--light-gray); border-radius: var(--radius-6); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+      <p class="section-subtitle text-center">Patient Dashboard</p>
+      <h2 class="h2 section-title text-center">Book an Appointment</h2>
+    </div>
+  </div>
+  <br><br><br>
+
+  <div class="container">
+    <div class="dashboard-card" style="box-shadow: var(--shadow-4); margin-bottom: 20px; padding: 30px; border: 1px solid var(--light-gray); border-radius: var(--radius-6); text-align: left; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+      <div class="form-container">
+        <form action="{% url 'patient_book_appointment' %}" method="post" class="form">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="id_doctor" class="label">Doctor:</label>
+            <select name="doctor" id="id_doctor" class="input" required>
+              {% for doctor in doctors %}
+                <option value="{{ doctor.id }}">Dr. {{ doctor.first_name }} {{ doctor.last_name }} - {{ doctor.department.dep_name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="id_date" class="label">Date:</label>
+            <input type="date" name="date" id="id_date" class="input" required>
+          </div>
+          <div class="form-group">
+            <label for="id_time" class="label">Time:</label>
+            <input type="time" name="time" id="id_time" class="input" required>
+          </div>
+          <div class="form-group">
+            <label for="id_symptoms" class="label">Symptoms:</label>
+            <textarea name="symptoms" id="id_symptoms" class="input" cols="30" rows="10" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-calendar-plus"></i>
+            Book Appointment
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .dashboard-card {
+    box-shadow: var(--shadow-4);
+    margin-bottom: 20px;
+    padding: 30px;
+    border: 1px solid var(--light-gray);
+    border-radius: var(--radius-6);
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .form-container {
+    width: 50%;
+    margin: 0 auto; /* Center the form horizontally */
+    background: none;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .input {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid var(--light-gray);
+    border-radius: var(--radius-6);
+    font-size: 16px;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: var(--radius-6);
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+</style>
+{% endblock %}

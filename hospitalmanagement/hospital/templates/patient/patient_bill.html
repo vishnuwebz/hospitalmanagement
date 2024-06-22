@@ -1,0 +1,150 @@
+{% include 'patient/patient_navbar.html' %}
+{% block content %}
+
+<section class="section dashboard" id="dashboard" aria-label="dashboard" style="margin-bottom: 10px; width: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center;">
+  <div class="container">
+    <div class="dashboard-card" style="box-shadow: var(--shadow-4); margin-bottom: 20px; padding: 30px; border: 1px solid var(--light-gray); border-radius: var(--radius-6); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+      <p class="section-subtitle text-center">Patient Dashboard</p>
+      <h2 class="h2 section-title text-center">Invoice for {{ user.first_name }} {{ user.last_name }}</h2>
+    </div>
+  </div>
+  <br><br><br>
+  <div class="container">
+    <div class="invoice-card" style="box-shadow: var(--shadow-4); margin-bottom: 20px; padding: 30px; border: 1px solid var(--light-gray); border-radius: var(--radius-6); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+      <h3 class="h3 card-title">Invoice Details</h3> <br>
+      <div style="text-align: left;">
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+          <tr style="background-color: #f2f2f2;">
+            <th style="padding: 10px; border: 1px solid var(--light-gray); text-align: left;">Detail</th>
+            <th style="padding: 10px; border: 1px solid var(--light-gray); text-align: left;">Information</th>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid var(--light-gray);"><strong>Patient Name:</strong></td>
+            <td style="padding: 10px; border: 1px solid var(--light-gray);">{{ user.first_name }} {{ user.last_name }}</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid var(--light-gray);"><strong>Contact Number:</strong></td>
+            <td style="padding: 10px; border: 1px solid var(--light-gray);">{{ user.profile.contact_number }}</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid var(--light-gray);"><strong>Email:</strong></td>
+            <td style="padding: 10px; border: 1px solid var(--light-gray);">{{ user.email }}</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid var(--light-gray);"><strong>Date Joined:</strong></td>
+            <td style="padding: 10px; border: 1px solid var(--light-gray);">{{ user.date_joined }}</td>
+          </tr>
+        </table>
+
+        <h4 class="h4">Billing Information</h4>
+        {% for billing in billings %}
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+          <tr style="background-color: #f2f2f2;">
+            <th style="padding: 10px; border: 1px solid var(--light-gray); text-align: left;">Detail</th>
+            <th style="padding: 10px; border: 1px solid var(--light-gray); text-align: left;">Information</th>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid var(--light-gray);"><strong>Doctor's Name:</strong></td>
+            <td style="padding: 10px; border: 1px solid var(--light-gray);">Dr. {{ billing.doctor.first_name }} {{ billing.doctor.last_name }}</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid var(--light-gray);"><strong>Department:</strong></td>
+            <td style="padding: 10px; border: 1px solid var(--light-gray);">{{ billing.doctor.department }}</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid var(--light-gray);"><strong>Doctor's Email:</strong></td>
+            <td style="padding: 10px; border: 1px solid var(--light-gray);">{{ billing.doctor.email }}</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid var(--light-gray);"><strong>Amount to Pay:</strong></td>
+            <td style="padding: 10px; border: 1px solid var(--light-gray);">&#x20b9;{{ billing.amount }}</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid var(--light-gray);"><strong>Status:</strong></td>
+            <td style="padding: 10px; border: 1px solid var(--light-gray);{% if billing.status == 'Paid' %} color: green; {% elif billing.status == 'Unpaid' %} color: red; {% elif billing.status == 'Cancelled' %} color: brown; {% elif billing.status == 'Pending' %} color: blue; {% endif %}"><b>{{ billing.status }}</b></td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid var(--light-gray);"><strong>Description:</strong></td>
+            <td style="padding: 10px; border: 1px solid var(--light-gray);">{{ billing.description }}</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid var(--light-gray);"><strong>Billing Date:</strong></td>
+            <td style="padding: 10px; border: 1px solid var(--light-gray);">{{ billing.date }}</td>
+          </tr>
+        </table>
+        {% endfor %}
+
+        <h4 class="h4">Payment Method</h4>
+        <p>Payment can be done on reception counter. <i class="ri-bank-card-fill"></i> <i class="ri-wallet-3-fill"></i> </p>
+
+        <i class="ri-money-rupee-circle-line"></i>
+
+
+        <br><br><br>
+        <h4 class="h4"><u>Total Amount</u></h4>
+        <br>
+        <p style="color: var(--oxford-blue-1);"><strong>Total Amount Billed:</strong> &#x20b9;{{ total_amount_patient }}</p>
+        <p style="color: var(--oxford-blue-1);"><strong>Gross Total Amount in Hospital:</strong> &#x20b9;{{ gross_total_amount }}</p>
+
+        <button onclick="window.print()" class="btn btn-primary">Print Invoice</button>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+<style>
+  .dashboard-card:hover, .invoice-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: var(--radius-6);
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+
+  th, td {
+    padding: 10px;
+    border: 1px solid var(--light-gray);
+    text-align: left;
+  }
+
+  th {
+    background-color: var(--lavender-web);
+    color: var(--black);
+  }
+td {
+  color: var(--oxford-blue-1);
+
+}
+
+h4{
+ color: var(--oxford-blue-3);
+}
+
+i {
+  color: var(--oxford-blue-2);
+  }
+
+
+
+</style>
